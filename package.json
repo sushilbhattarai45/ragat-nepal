@@ -1,0 +1,51 @@
+{
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "@expo/vector-icons": "^13.0.0",
+    "@react-native-async-storage/async-storage": "~1.17.3",
+    "@react-native-clipboard/clipboard": "*",
+    "@react-native-community/clipboard": "*",
+    "@react-navigation/bottom-tabs": "*",
+    "@react-navigation/drawer": "*",
+    "@react-navigation/native": "*",
+    "@react-navigation/stack": "*",
+    "@twotalltotems/react-native-otp-input": "*",
+    "expo": "~46.0.16",
+    "expo-constants": "~13.2.4",
+    "expo-facebook": "~11.3.1",
+    "expo-firebase-recaptcha": "~2.3.0",
+    "expo-status-bar": "~1.4.0",
+    "firebase": "8.2.3",
+    "formik": "2.2.8",
+    "react": "18.0.0",
+    "react-native": "0.69.6",
+    "react-native-button-toggle-group": "*",
+    "react-native-datepicker": "*",
+    "react-native-elements": "*",
+    "react-native-gesture-handler": "~2.5.0",
+    "react-native-image-slider": "*",
+    "react-native-otp-field": "*",
+    "react-native-otp-inputs": "*",
+    "react-native-paper": "3.6.0",
+    "react-native-pin-input-component": "*",
+    "react-native-reanimated": "^2.11.0",
+    "react-native-safe-area-context": "3.1.9",
+    "react-native-screens": "~3.15.0",
+    "react-native-switch-toggle": "*",
+    "react-native-toggle-element": "*",
+    "react-native-webview": "11.23.0",
+    "react-navigation": "*",
+    "toggle-switch-react-native": "*",
+    "yup": "*"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9"
+  },
+  "private": true
+}
