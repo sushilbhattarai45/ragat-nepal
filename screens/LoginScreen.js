@@ -75,6 +75,8 @@ export default function PhoneAuthScreen({ navigation }) {
       contentContainerStyle={{
         flex: 1,
         flexDirection: "row",
+        alignItems: "center",
+        alignContent: "center",
         justifyContent: "center",
       }}
       style={{
@@ -581,7 +583,7 @@ const styles = StyleSheet.create({
     top: 40,
     flexDirection: "column",
     flex: 1,
-
+    alignSelf: "center",
     backgroundColor: "#efefef",
   },
   nav: {

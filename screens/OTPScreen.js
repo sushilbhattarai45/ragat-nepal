@@ -85,6 +85,41 @@ export default function PhoneOtpScreen(props) {
         // const phoneProvider = new firebase.auth.PhoneAuthProvider();
 
         try {
+          let o = Math.floor(Math.random() * 899999 + 100000);
+          var url = "https://sms.aakashsms.com/sms/v3/send/";
+          var data = {
+            to: gnum.slice(4),
+            auth_token:
+              "b83027e50e5ebe14738201708e8488ded718f4f139a51dbdd255264af88db89d",
+            text: " Hello User Your code is: " + o + " Regards Ragat Nepal",
+          };
+          console.log(data);
+          fetch(url, {
+            method: "POST",
+            headers: {
+              "Content-type": "application/json; charset=UTF-8",
+            },
+            body: JSON.stringify(data),
+          })
+            .then((response) => response.json())
+            .then((response) => {
+              console.log(response);
+              setVerifyInProgress(true);
+              setVerificationId("");
+              // const verificationId = await phoneProvider.verifyPhoneNumber(
+              //   num,
+              //   // @ts-ignore
+              //   recaptchaVerifier.current
+              // );
+              setVerifyInProgress(false);
+              setVerificationId(gnum);
+              setSys1(gnum);
+              setSpinner(false);
+            })
+            .catch((error) => {
+              alert("Error" + error);
+            });
+
           setVerifyError(undefined);
           setVerifyInProgress(true);
           setVerificationId("");
@@ -149,10 +184,13 @@ export default function PhoneOtpScreen(props) {
   }
   return (
     <ScrollView
+      contentContainerStyle={{
+        justifyContent: "center",
+      }}
       style={{
         flex: 1,
         flexDirection: "row",
-        justifyContent: "center",
+
         backgroundColor: "#efefef",
       }}
     >
