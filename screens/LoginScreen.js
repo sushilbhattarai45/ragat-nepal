@@ -58,7 +58,7 @@ export default function PhoneAuthScreen({ navigation }) {
   const [pin5, setPin5] = React.useState("");
   const [sys1, setSys1] = React.useState("");
   const [spinner, setSpinner] = React.useState("");
-
+  const [systemOtp, setSystemOtp] = React.useState("");
   const [pin6, setPin6] = React.useState("");
   const code = pin1 + pin2 + pin3 + pin4 + pin5 + pin6;
   const [verificationId, setVerificationId] = React.useState("");
@@ -85,10 +85,10 @@ export default function PhoneAuthScreen({ navigation }) {
       }}
     >
       <View style={styles.container}>
-        <FirebaseRecaptcha.FirebaseRecaptchaVerifierModal
+        {/* <FirebaseRecaptcha.FirebaseRecaptchaVerifierModal
           ref={recaptchaVerifier}
           firebaseConfig={FIREBASE_CONFIG}
-        />
+        /> */}
         <View style={styles.nav}>
           <Ionicons
             name="chevron-back"
@@ -204,7 +204,46 @@ export default function PhoneAuthScreen({ navigation }) {
                       setSpinner(false);
                       alert(response[0].message);
                       if (response[0].errorstate == 0) {
-                        SendOtp();
+                        // SendOtp();
+
+                        let o = Math.floor(Math.random() * 899999 + 100000);
+                        setSystemOtp(o);
+                        var url = "https://sms.aakashsms.com/sms/v3/send/";
+                        var data = {
+                          to: Contact.slice(4),
+                          auth_token:
+                            "b83027e50e5ebe14738201708e8488ded718f4f139a51dbdd255264af88db89d",
+                          text:
+                            " Hello User Your code is: " +
+                            o +
+                            " Regards Ragat Nepal",
+                        };
+                        console.log(data);
+                        fetch(url, {
+                          method: "POST",
+                          headers: {
+                            "Content-type": "application/json; charset=UTF-8",
+                          },
+                          body: JSON.stringify(data),
+                        })
+                          .then((response) => response.json())
+                          .then((response) => {
+                            console.log(response);
+                            setVerifyInProgress(true);
+                            setVerificationId("");
+                            // const verificationId = await phoneProvider.verifyPhoneNumber(
+                            //   num,
+                            //   // @ts-ignore
+                            //   recaptchaVerifier.current
+                            // );
+                            setVerifyInProgress(false);
+                            setVerificationId(phoneNumber);
+                            setSys1(phoneNumber);
+                            setSpinner(false);
+                          })
+                          .catch((error) => {
+                            alert("Error" + error);
+                          });
                       }
                     })
                     .catch((error) => {
@@ -216,21 +255,22 @@ export default function PhoneAuthScreen({ navigation }) {
                       alert("Error");
                       setSpinner(false);
                     } else {
-                      const phoneProvider = new firebase.auth.PhoneAuthProvider();
+                      // const phoneProvider = new firebase.auth.PhoneAuthProvider();
                       try {
-                        setVerifyError(undefined);
+                        // setVerifyError(undefined);
                         setVerifyInProgress(true);
                         setVerificationId("");
-                        const verificationId = await phoneProvider.verifyPhoneNumber(
-                          num,
-                          // @ts-ignore
-                          recaptchaVerifier.current
-                        );
+                        // const verificationId = await phoneProvider.verifyPhoneNumber(
+                        //   num,
+                        //   // @ts-ignore
+                        //   recaptchaVerifier.current
+                        // );
                         setVerifyInProgress(false);
-                        setVerificationId(verificationId);
+                        setVerificationId(phoneNumber);
                         setSys1(phoneNumber);
                         setSpinner(false);
-
+                        let o = Math.floor(Math.random() * 899999 + 100000);
+                        alert(o);
                         nameref1.current?.focus();
                       } catch (err) {
                         setSpinner(false);
@@ -464,23 +504,23 @@ export default function PhoneAuthScreen({ navigation }) {
                         if (code.length == 6) {
                           try {
                             setSpinner(true);
-
-                            setConfirmError(undefined);
-                            setConfirmInProgress(true);
-                            const credential = firebase.auth.PhoneAuthProvider.credential(
-                              verificationId,
-                              code
+                            console.log(
+                              "code" + code + "systemotp" + systemOtp
                             );
-                            const authResult = await firebase
-                              .auth()
-                              .signInWithCredential(credential);
-                            setConfirmInProgress(false);
-                            setVerificationId("");
-                            setVerificationCode("");
-                            setSpinner(false);
-                            await AsyncStorage.setItem("contact", num);
+                            if (systemOtp == code) {
+                              setConfirmError(undefined);
+                              setConfirmInProgress(true);
 
-                            navigation.navigate("Home", { screen: "Home" });
+                              setConfirmInProgress(false);
+                              setVerificationId("");
+                              setVerificationCode("");
+                              setSpinner(false);
+                              await AsyncStorage.setItem("contact", num);
+                              navigation.navigate("Home", { screen: "Home" });
+                            } else {
+                              alert("Wrong OTP");
+                              setSpinner(false);
+                            }
                           } catch (err) {
                             setSpinner(false);
 

@@ -76,22 +76,25 @@ export default function PhoneOtpScreen(props) {
   const donor = props.route.params.donor;
 
   useEffect(() => {
+    let o = Math.floor(Math.random() * 899999 + 100000);
+    alert(o);
     async function otp() {
       if (gnum.length != 14) {
         alert("Error");
       } else {
-        const phoneProvider = new firebase.auth.PhoneAuthProvider();
+        // const phoneProvider = new firebase.auth.PhoneAuthProvider();
+
         try {
           setVerifyError(undefined);
           setVerifyInProgress(true);
           setVerificationId("");
-          const verificationId = await phoneProvider.verifyPhoneNumber(
-            gnum,
-            // @ts-ignore
-            recaptchaVerifier.current
-          );
+          // const verificationId = await phoneProvider.verifyPhoneNumber(
+          //   gnum,
+          //   // @ts-ignore
+          //   recaptchaVerifier.current
+          // );
           setVerifyInProgress(false);
-          setVerificationId(verificationId);
+          setVerificationId(gnum);
           nameref1.current?.focus();
         } catch (err) {
           alert(err);
@@ -154,10 +157,10 @@ export default function PhoneOtpScreen(props) {
       }}
     >
       <View style={styles.container}>
-        <FirebaseRecaptcha.FirebaseRecaptchaVerifierModal
+        {/* <FirebaseRecaptcha.FirebaseRecaptchaVerifierModal
           ref={recaptchaVerifier}
           firebaseConfig={FIREBASE_CONFIG}
-        />
+        /> */}
         <View style={styles.nav}>
           <Ionicons
             name="chevron-back"
