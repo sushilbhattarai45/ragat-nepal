@@ -71,13 +71,12 @@ export default function PhoneOtpScreen(props) {
   const bloodgroup = props.route.params.bloodg;
   const dob = props.route.params.dob;
   const address = props.route.params.address;
-
+  const [otp, setOtp] = useState("");
   const name = props.route.params.name;
   const donor = props.route.params.donor;
 
   useEffect(() => {
     let o = Math.floor(Math.random() * 899999 + 100000);
-    alert(o);
     async function otp() {
       if (gnum.length != 14) {
         alert("Error");
@@ -86,6 +85,7 @@ export default function PhoneOtpScreen(props) {
 
         try {
           let o = Math.floor(Math.random() * 899999 + 100000);
+          setOtp(o);
           var url = "https://sms.aakashsms.com/sms/v3/send/";
           var data = {
             to: gnum.slice(4),
@@ -114,7 +114,7 @@ export default function PhoneOtpScreen(props) {
               setVerifyInProgress(false);
               setVerificationId(gnum);
               setSys1(gnum);
-              setSpinner(false);
+              // setSpinner(false);
             })
             .catch((error) => {
               alert("Error" + error);
@@ -167,7 +167,7 @@ export default function PhoneOtpScreen(props) {
     })
       .then((response) => response.json())
       .then((response) => {
-        alert(response[0].message);
+        // alert(response[0].message);
         if (response[0].errorstate == 0) {
           setandred();
         } else {
@@ -185,6 +185,8 @@ export default function PhoneOtpScreen(props) {
   return (
     <ScrollView
       contentContainerStyle={{
+        alignItems: "center",
+        flex: 1,
         justifyContent: "center",
       }}
       style={{
@@ -411,18 +413,16 @@ export default function PhoneOtpScreen(props) {
                           setConfirmError(undefined);
                           setConfirmInProgress(true);
 
-                          const credential = firebase.auth.PhoneAuthProvider.credential(
-                            verificationId,
-                            pinvalue
-                          );
-                          const authResult = await firebase
-                            .auth()
-                            .signInWithCredential(credential);
-                          setConfirmInProgress(false);
-                          setVerificationId("");
-                          setVerificationCode("");
+                          if (pinvalue == otp) {
+                            setConfirmInProgress(false);
+                            setVerificationId("");
+                            setVerificationCode("");
 
-                          insertRecord();
+                            insertRecord();
+                          } else {
+                            console.log(err);
+                            alert("Wrong OTP");
+                          }
                         } catch (err) {
                           console.log(err);
                           alert("Wrong OTP");
