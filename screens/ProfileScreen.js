@@ -306,10 +306,7 @@ const ProfileScreen = ({ navigation }) => {
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
-      style={[
-        styles.container,
-        { paddingHorizontal: Spacing.m, marginTop: Constants.statusBarHeight },
-      ]}
+      style={[styles.container, { paddingHorizontal: Spacing.m }]}
     >
       <Header
         iconL="chevron-left"

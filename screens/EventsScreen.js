@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Text,
   View,
@@ -7,16 +7,14 @@ import {
   ScrollView,
   ActivityIndicator,
   Image,
-} from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+} from "react-native";
 
-import Header from '../components/Header';
-import callAPI from '../components/callAPI';
+import Header from "../components/Header";
+import callAPI from "../components/callAPI";
 
-import Constants from 'expo-constants';
-import { Colors, Spacing, Fonts } from '../components/Theme';
-import { MaterialCommunityIcons as Icon } from '@expo/vector-icons';
+import Constants from "expo-constants";
+import { Colors, Spacing, Fonts } from "../components/Theme";
+import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
 
 const EventPost = ({ caption, description, photo, date, time, address }) => {
   const [liked, setLiked] = React.useState(false);
@@ -27,19 +25,21 @@ const EventPost = ({ caption, description, photo, date, time, address }) => {
           style={{
             ...Fonts.h4,
             letterSpacing: 1.6,
-            textTransform: 'uppercase',
-          }}>
+            textTransform: "uppercase",
+          }}
+        >
           {caption}
         </Text>
         <View style={styles.divider}></View>
         <Text
-          style={{ ...Fonts.p1, color: Colors.darkGrey, letterSpacing: 1.6 }}>
+          style={{ ...Fonts.p1, color: Colors.darkGrey, letterSpacing: 1.6 }}
+        >
           {description}
         </Text>
       </View>
       <View style={styles.imgContainer}>
         <Image
-          style={{ resizeMode: 'cover', width:'100%',height:200 }}
+          style={{ resizeMode: "cover", width: "100%", height: 200 }}
           source={{ uri: photo }}
         />
       </View>
@@ -60,14 +60,14 @@ const EventPost = ({ caption, description, photo, date, time, address }) => {
         </View>
         <View>
           <Icon
-            style={{ textAlign: 'center' }}
+            style={{ textAlign: "center" }}
             selectable={false}
-            name={liked ? 'star' : 'star-outline'}
+            name={liked ? "star" : "star-outline"}
             onPress={() => setLiked(!liked)}
             size={40}
             color="gold"
           />
-          <Text style={{ textAlign: 'center', color: Colors.darkGrey }}>
+          <Text style={{ textAlign: "center", color: Colors.darkGrey }}>
             Intrested
           </Text>
         </View>
@@ -80,7 +80,7 @@ const EventsScreen = ({ navigation }) => {
   const [loading, setLoading] = React.useState(false);
 
   const getPosts = async () => {
-    const url = 'https://ragatnepal.com/api/eventsgetapi.php';
+    const url = "https://ragatnepal.com/api/eventsgetapi.php";
     setLoading(true);
     let res = await callAPI(url, {});
     res.errorstate ? alert(res.message) : null;
@@ -91,49 +91,56 @@ const EventsScreen = ({ navigation }) => {
     (async () => await getPosts())();
   }, []);
   return (
-    <ScrollView style={{flex:1}}>
-    <View style={{ paddingHorizontal: Spacing.m,marginTop:Spacing.m }}>
-      <Header
-        iconL="chevron-left"
-        headerText="Events"
-        onPressL={navigation.goBack}
-      />
-    <ScrollView
-      showsVerticalScrollIndicator={false}
-      style={[styles.container, ]}>
-         
-      <View style={{ marginTop: Spacing.x }}>
-        {loading ? (
-          <ActivityIndicator
-            style={{ marginTop: 30 }}
-            size={'large'}
-            color={'red'}
-          />
-        ) : (
-          eventList?.map((event) => {
-            let { caption, description, photo, date, time, address } = event;
-            return (
-              <EventPost
-                caption={caption}
-                description={description}
-                photo={photo}
-                date={date}
-                time={time}
-                address={address}
+    <ScrollView style={{ flex: 1 }}>
+      <View style={{ paddingHorizontal: Spacing.m }}>
+        <Header
+          iconL="chevron-left"
+          headerText="Events"
+          onPressL={navigation.goBack}
+        />
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          style={[styles.container]}
+        >
+          <View style={{ marginTop: Spacing.x }}>
+            {loading ? (
+              <ActivityIndicator
+                style={{ marginTop: 30 }}
+                size={"large"}
+                color={"red"}
               />
-            );
-          })
-        )}
+            ) : (
+              eventList?.map((event) => {
+                let {
+                  caption,
+                  description,
+                  photo,
+                  date,
+                  time,
+                  address,
+                } = event;
+                return (
+                  <EventPost
+                    caption={caption}
+                    description={description}
+                    photo={photo}
+                    date={date}
+                    time={time}
+                    address={address}
+                  />
+                );
+              })
+            )}
+          </View>
+        </ScrollView>
       </View>
-    </ScrollView>
-    </View>
     </ScrollView>
   );
 };
 export default EventsScreen;
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#f1f1f1',
+    backgroundColor: "#f1f1f1",
   },
   eventPost: {
     backgroundColor: Colors.white,
@@ -152,8 +159,8 @@ const styles = StyleSheet.create({
     marginVertical: Spacing.s,
   },
   eventInfoItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
   eventInfoText: {
     ...Fonts.p1,
@@ -162,8 +169,8 @@ const styles = StyleSheet.create({
   },
   footer: {
     flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
 });
