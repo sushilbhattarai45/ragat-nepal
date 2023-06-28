@@ -196,16 +196,21 @@ export default class SignUp extends Component {
             onChangeText={(value) => this.setState({ phone: value })}
             style={{ marginBottom: Spacing.m }}
           />
-
-          <View
+          <Input
+            icon="calendar"
+            placeholder="Date of Birth (YYYY-MM-DD)"
+            onChangeText={(value) => this.setState({ dob: value })}
+            style={{ marginBottom: Spacing.m }}
+          />
+          {/* <View
             style={{
               backgroundColor: "white",
               elevation: 5,
               borderRadius: 30,
               height: 60,
             }}
-          >
-            <DatePicker
+          > */}
+          {/* <DatePicker
               style={{
                 width: "98%",
                 elevation: 5,
@@ -262,8 +267,8 @@ export default class SignUp extends Component {
               onDateChange={(date) => {
                 this.setState({ dob: date });
               }}
-            />
-          </View>
+            /> */}
+          {/* </View> */}
           <View style={{ flexDirection: "row", left: 20, height: 60 }}>
             <Text
               style={{

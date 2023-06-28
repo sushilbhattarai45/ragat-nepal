@@ -86,7 +86,6 @@ const HomeScreen = ({ navigation }) => {
           styles.container,
           {
             backgroundColor: Colors.primary,
-            marginTop: Constants.statusBarHeight,
           },
         ]}
       >

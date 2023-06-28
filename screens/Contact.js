@@ -154,7 +154,7 @@ export default function Contact({ navigation }) {
                   style={{ marginHorizontal: 5, marginTop: 10 }}
                   color="#DA0037"
                   onPress={() =>
-                    Linking.openURL("https://www.instagram.com/sans_caar/")
+                    Linking.openURL("https://www.instagram.com/ssanskaar_/")
                   }
                 />
                 <Icon
@@ -232,12 +232,10 @@ export default function Contact({ navigation }) {
               </View>
             </View>
           </View>
-
           <View
             style={{
               flexDirection: "row",
-              justifyContent: "center",
-              alignItems: "center",
+              justifyContent: "space-between",
               marginTop: 58,
             }}
           >
@@ -247,8 +245,6 @@ export default function Contact({ navigation }) {
                 backgroundColor: "white",
                 flex: 0.45,
                 alignItems: "center",
-                justifyContent: "center",
-                textAlign: "center",
                 padding: 16,
                 borderRadius: 16,
               }}
@@ -288,7 +284,7 @@ export default function Contact({ navigation }) {
                   color="#DA0037"
                   onPress={() =>
                     Linking.openURL(
-                      "https://www.instagram.com/PujanPokharelOfficial"
+                      "https://www.instagram.com/pujanpokharelofficial/"
                     )
                   }
                 />
@@ -299,7 +295,70 @@ export default function Contact({ navigation }) {
                   style={{ marginHorizontal: 5, marginTop: 10 }}
                   onPress={() =>
                     Linking.openURL(
-                      "https://www.facebook.com/OfficialPujanPokharel"
+                      "https://www.facebook.com/PujanPokharelOfficial"
+                    )
+                  }
+                />
+              </View>
+            </View>
+
+            <View
+              style={{
+                flexDirection: "column",
+                backgroundColor: "white",
+                flex: 0.45,
+                alignItems: "center",
+                padding: 16,
+                borderRadius: 16,
+              }}
+            >
+              <Image
+                style={{
+                  height: 100,
+                  width: 100,
+                  borderRadius: 50,
+                  marginTop: -50,
+                }}
+                source={require("../assets/laley.jpg")}
+              />
+              <Text
+                style={{
+                  marginTop: 10,
+                  fontWeight: "bold",
+                  textAlign: "center",
+                  fontSize: 13.6,
+                  position: "relative",
+                }}
+              >
+                Shivaraj Paudel
+              </Text>
+              <Text style={{ textAlign: "center", fontSize: 9 }}>
+                Graphics Designer
+              </Text>
+              <View
+                style={{
+                  flexDirection: "row",
+                }}
+              >
+                <Icon
+                  name="instagram"
+                  size={24}
+                  style={{ marginHorizontal: 5, marginTop: 10 }}
+                  color="#DA0037"
+                  onPress={() =>
+                    Linking.openURL(
+                      "https://www.instagram.com/official_shivarajpaudel"
+                    )
+                  }
+                />
+                <Icon
+                  name="facebook"
+                  size={23}
+                  color="blue"
+                  style={{ marginHorizontal: 5, marginTop: 10 }}
+                  onPress={() =>
+                    Linking.openURL(
+                      "https://www.facebook.com/shivarajpaudel.student"
                     )
                   }
                 />
@@ -435,7 +494,7 @@ export default function Contact({ navigation }) {
                   style={{ marginHorizontal: 5, marginTop: 10 }}
                   onPress={() =>
                     Linking.openURL(
-                      "https://www.facebook.com/kalikamanavgyansecondaryschool/"
+                      "https://www.facebook.com/Kalikaschoolbutwal"
                     )
                   }
                 />

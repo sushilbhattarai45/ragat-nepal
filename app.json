@@ -4,7 +4,7 @@
     "slug": "snack-4c734101-8e88-4607-83b0-5014dfc6eeda",
     "version": "3.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/logo.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
@@ -15,21 +15,19 @@
       "fallbackToCacheTimeout": 0,
       "url": "https://u.expo.dev/3c712780-a6b0-4bf2-9acb-9f36aa8aab4b"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/logo.png",
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.nepcode.ragatnepal"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/logo.png"
     },
     "runtimeVersion": {
       "policy": "sdkVersion"
