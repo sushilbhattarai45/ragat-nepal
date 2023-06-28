@@ -31,14 +31,13 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "description": "Theme added",
-    "extra": {
-      "eas": {
-        "projectId": "e6994dd4-08c5-4102-b668-0f15c5e4a6dc"
-      }
-    },
     "runtimeVersion": {
       "policy": "sdkVersion"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "3c712780-a6b0-4bf2-9acb-9f36aa8aab4b"
+      }
     }
   }
 }
