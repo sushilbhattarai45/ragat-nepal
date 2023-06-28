@@ -22,7 +22,7 @@ import callAPI from '../components/callAPI';
 import { Feather as Icon } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { MaterialIcons } from '@expo/vector-icons';
-import DatePicker from 'react-native-datepicker';
+import DatePicker from '@react-native-community/datetimepicker';
 
 const ProfileScreen = ({ navigation }) => {
   const getCurrentDate = () => {

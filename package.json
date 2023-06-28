@@ -24,9 +24,8 @@
     "firebase": "8.2.3",
     "formik": "2.2.8",
     "react": "18.0.0",
-    "react-native": "0.69.6",
+    "react-native": "0.69.9",
     "react-native-button-toggle-group": "*",
-    "react-native-datepicker": "*",
     "react-native-elements": "*",
     "react-native-gesture-handler": "~2.5.0",
     "react-native-image-slider": "*",
@@ -34,15 +33,16 @@
     "react-native-otp-inputs": "*",
     "react-native-paper": "3.6.0",
     "react-native-pin-input-component": "*",
-    "react-native-reanimated": "^2.11.0",
-    "react-native-safe-area-context": "3.1.9",
+    "react-native-reanimated": "~2.9.1",
+    "react-native-safe-area-context": "4.3.1",
     "react-native-screens": "~3.15.0",
     "react-native-switch-toggle": "*",
     "react-native-toggle-element": "*",
     "react-native-webview": "11.23.0",
     "react-navigation": "*",
     "toggle-switch-react-native": "*",
-    "yup": "*"
+    "yup": "*",
+    "@react-native-community/datetimepicker": "6.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
