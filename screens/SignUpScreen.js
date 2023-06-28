@@ -4,15 +4,14 @@ import {
   View,
   StyleSheet,
   Image,
+  Switch,
   ScrollView,
   Pressable,
   TextInput,
   ActivityIndicator,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
-import DatePicker from "@react-native-community/datetimepicker";
-
-import { Switch } from "react-native-elements";
+import DatePicker from "react-native-datepicker";
 
 import { Ionicons } from "@expo/vector-icons";
 import callAPI from "../components/callAPI";
@@ -209,11 +208,11 @@ export default class SignUp extends Component {
             <DatePicker
               style={{
                 width: "98%",
-                // elevation: 5,
+                elevation: 5,
                 fontSize: 22,
                 color: "black",
               }}
-              value={new Date(this.state.dob)}
+              date={this.state.dob}
               mode="date"
               placeholder={"Date Of Birth"}
               format="YYYY-MM-DD"
@@ -260,9 +259,8 @@ export default class SignUp extends Component {
                   top: 10,
                 },
               }}
-              onChange={(date) => {
+              onDateChange={(date) => {
                 this.setState({ dob: date });
-                console.log(date);
               }}
             />
           </View>
@@ -280,6 +278,7 @@ export default class SignUp extends Component {
               value={this.state.toggle}
               onValueChange={(value) => {
                 this.setState({ toggle: value });
+                console.log(value);
               }}
             />
           </View>

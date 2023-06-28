@@ -75,6 +75,8 @@ export default function PhoneAuthScreen({ navigation }) {
       contentContainerStyle={{
         flex: 1,
         flexDirection: "row",
+        alignItems: "center",
+        alignContent: "center",
         justifyContent: "center",
       }}
       style={{
@@ -191,7 +193,6 @@ export default function PhoneAuthScreen({ navigation }) {
                   };
                   var data = {
                     contact: Contact,
-
                     key: "5485FE5759545A4A",
                   };
                   fetch(InsertAPIURL, {
@@ -202,6 +203,7 @@ export default function PhoneAuthScreen({ navigation }) {
                     .then((response) => response.json())
                     .then((response) => {
                       setSpinner(false);
+                      console.log(response[0]);
                       alert(response[0].message);
                       if (response[0].errorstate == 0) {
                         // SendOtp();
@@ -581,7 +583,7 @@ const styles = StyleSheet.create({
     top: 40,
     flexDirection: "column",
     flex: 1,
-
+    alignSelf: "center",
     backgroundColor: "#efefef",
   },
   nav: {

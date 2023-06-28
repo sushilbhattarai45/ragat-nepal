@@ -10,14 +10,14 @@ import {
   Button,
   TextInput,
   KeyboardAvoidingView,
+  Switch,
 } from "react-native";
-import { Switch } from "react-native-elements";
 
 import { Formik } from "formik";
 import * as Yup from "yup";
 import Header from "../components/Header";
 import Input from "../components/Input";
-import RNDATE from "@react-native-community/datetimepicker";
+import DatePicker from "react-native-datepicker";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import callAPI from "../components/callAPI";
@@ -41,14 +41,24 @@ const ProfileEdit = ({ navigation, route }) => {
   const submit = async (values) => {
     try {
       const url = "https://ragatnepal.com/api/update.php";
-      const num = AsyncStorage.getItem("contact");
+      const num = await AsyncStorage.getItem("contact");
+      console.log(num);
       if (num) {
+        console.log("ok" + num);
         values["donor"] = `${values["donor"]}`;
-        console.log(values);
-        const res = await callAPI(url, { ...values });
-        console.log(res);
-        res.errorstate
-          ? alert(res.message)
+        console.log({ ...values, key: "5485FE5759545A4A" });
+        let res = await fetch(url, {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ ...values, key: "5485FE5759545A4A" }),
+        });
+        console.log("RESPONSE");
+        console.log(await res.json());
+        res.error
+          ? console.log(res.error)
           : alert("Your Data has been updated");
         navigation.navigate("Profile");
       }
@@ -56,12 +66,13 @@ const ProfileEdit = ({ navigation, route }) => {
       // console.warn(e);
     }
   };
+
   var userdata = {
     address: route.params.userdata["address"],
     dob: route.params.userdata["dob"],
     contact: route.params.userdata["contact"],
     bgroup: route.params.userdata["bgroup"],
-    donor: !!JSON.parse(String(route.params.userdata["donor"]).toLowerCase()),
+    donor: JSON.parse(route.params.userdata["donor"]),
     name: route.params.userdata["name"],
   };
   console.log(userdata);
@@ -158,67 +169,14 @@ const ProfileEdit = ({ navigation, route }) => {
                     marginBottom: Spacing.m,
                   }}
                 >
-                  <DatePicker
-                    style={{
-                      width: "98%",
-                      elevation: 5,
-                      fontSize: 22,
-                      color: "black",
-                    }}
-                    date={values.dob}
-                    mode="date"
-                    placeholder={"Date Of Birth"}
-                    format="YYYY-MM-DD"
-                    minDate="1950-01-01"
-                    maxDate="2021-01-01"
-                    confirmBtnText="Confirm"
-                    cancelBtnText="Cancel"
-                    iconComponent={
-                      <Icon
-                        name="calendar"
-                        size={24}
-                        color={
-                          !touched.dob
-                            ? Colors.darkGrey
-                            : errors.dob
-                            ? Colors.primary
-                            : Colors.darkGrey
-                        }
-                        style={{
-                          position: "absolute",
-                          left: 22,
-                          top: 19,
-                        }}
-                      />
-                    }
-                    showIcon={true}
-                    customStyles={{
-                      dateIcon: {
-                        // position: 'absolute',
-                        top: 17,
-                      },
-                      dateText: {
-                        left: -60,
-                        fontSize: 16,
-                      },
-
-                      placeholderText: {
-                        left: -60,
-                        fontSize: 16,
-                        color: "grey",
-                      },
-                      dateInput: {
-                        backgroundColor: "white",
-                        fontSize: 20,
-                        borderWidth: 0,
-                        color: "black",
-                        borderRadius: 30,
-                        height: 60,
-                        width: "90%",
-                        top: 10,
-                      },
-                    }}
-                    onDateChange={handleChange("dob")}
+                  <Input
+                    type="numeric"
+                    icon="calendar"
+                    value={values.dob}
+                    height={30}
+                    placeholder="Date of birth(YYYY-MM-DD)"
+                    onChangeText={handleChange("dob")}
+                    style={{ marginBottom: Spacing.m }}
                   />
                 </View>
 
@@ -239,7 +197,10 @@ const ProfileEdit = ({ navigation, route }) => {
                   </Text>
                   <Switch
                     value={values.donor}
-                    onValueChange={(value) => setFieldValue("donor", value)}
+                    onValueChange={(value) => {
+                      console.log(value);
+                      setFieldValue("donor", value);
+                    }}
                   />
                 </View>
 

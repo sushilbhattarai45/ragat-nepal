@@ -8,9 +8,11 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^13.0.0",
+    "@mohalla-tech/react-native-date-time-picker": "^2.0.1",
     "@react-native-async-storage/async-storage": "~1.17.3",
     "@react-native-clipboard/clipboard": "*",
     "@react-native-community/clipboard": "*",
+    "@react-native-community/datetimepicker": "6.2.0",
     "@react-navigation/bottom-tabs": "*",
     "@react-navigation/drawer": "*",
     "@react-navigation/native": "*",
@@ -18,15 +20,18 @@
     "@twotalltotems/react-native-otp-input": "*",
     "expo": "~46.0.16",
     "expo-constants": "~13.2.4",
+    "expo-datepicker": "^1.0.23",
     "expo-facebook": "~11.3.1",
     "expo-firebase-recaptcha": "~2.3.0",
     "expo-status-bar": "~1.4.0",
     "firebase": "8.2.3",
     "formik": "2.2.8",
+    "install": "^0.13.0",
+    "npm": "^9.7.2",
     "react": "18.0.0",
     "react-native": "0.69.9",
     "react-native-button-toggle-group": "*",
-    "react-native-elements": "*",
+    "react-native-datepicker": "*",
     "react-native-gesture-handler": "~2.5.0",
     "react-native-image-slider": "*",
     "react-native-otp-field": "*",
@@ -42,7 +47,7 @@
     "react-navigation": "*",
     "toggle-switch-react-native": "*",
     "yup": "*",
-    "@react-native-community/datetimepicker": "6.2.0"
+    "expo-updates": "~0.14.7"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
