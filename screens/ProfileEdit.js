@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Text,
   View,
@@ -10,66 +10,68 @@ import {
   Button,
   TextInput,
   KeyboardAvoidingView,
-} from 'react-native';
-import { Switch } from 'react-native-elements';
+  Switch,
+} from "react-native";
 
-import { Formik } from 'formik';
-import * as Yup from 'yup';
-import Header from '../components/Header';
-import Input from '../components/Input';
-import DatePicker from 'react-native-datepicker';
+import { Formik } from "formik";
+import * as Yup from "yup";
+import Header from "../components/Header";
+import Input from "../components/Input";
+import DatePicker from "react-native-datepicker";
 
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import callAPI from '../components/callAPI';
-import { Colors, Spacing, Fonts } from '../components/Theme';
-import { MaterialCommunityIcons as Icon } from '@expo/vector-icons';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import callAPI from "../components/callAPI";
+import { Colors, Spacing, Fonts } from "../components/Theme";
+import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
 
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
-    .min(4, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('Required'),
+    .min(4, "Too Short!")
+    .max(50, "Too Long!")
+    .required("Required"),
 
   address: Yup.string()
-    .min(8, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('Required'),
-  dob: Yup.string().required('Required'),
+    .min(8, "Too Short!")
+    .max(50, "Too Long!")
+    .required("Required"),
+  dob: Yup.string().required("Required"),
 });
 const ProfileEdit = ({ navigation, route }) => {
-  const bloodGroups = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
+  const bloodGroups = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"];
   const submit = async (values) => {
     try {
-      const url = 'https://ragatnepal.com/api/update.php';
-      const num = AsyncStorage.getItem('contact');
+      const url = "https://ragatnepal.com/api/update.php";
+      const num = await AsyncStorage.getItem("contact");
+      console.log(num);
       if (num) {
-        values['donor'] = `${values['donor']}`;
-        console.log(values);
+        console.log(num);
+
+        values["donor"] = `${values["donor"]}`;
         const res = await callAPI(url, { ...values });
-        console.log(res);
         res.errorstate
           ? alert(res.message)
-          : alert('Your Data has been updated');
-        navigation.navigate('Profile');
+          : alert("Your Data has been updated");
+        navigation.navigate("Profile");
       }
     } catch (e) {
       // console.warn(e);
     }
   };
   var userdata = {
-    address:route.params.userdata['address'],
-    dob:route.params.userdata['dob'],
-    contact:route.params.userdata['contact'],
-    bgroup:route.params.userdata['bgroup'],   
-    donor:!!JSON.parse(String(route.params.userdata['donor']).toLowerCase()),
-    name:route.params.userdata['name']
-  }
-  console.log(userdata)
+    address: route.params.userdata["address"],
+    dob: route.params.userdata["dob"],
+    contact: route.params.userdata["contact"],
+    bgroup: route.params.userdata["bgroup"],
+    donor: !!JSON.parse(String(route.params.userdata["donor"]).toLowerCase()),
+    name: route.params.userdata["name"],
+  };
+  console.log(userdata);
   return (
     <Formik
       initialValues={userdata}
       validationSchema={SignupSchema}
-      onSubmit={(values) => submit(values)}>
+      onSubmit={(values) => submit(values)}
+    >
       {({
         handleChange,
         handleBlur,
@@ -83,8 +85,9 @@ const ProfileEdit = ({ navigation, route }) => {
           style={{
             paddingHorizontal: Spacing.m,
             flex: 1,
-            backgroundColor: '#f1f1f1',
-          }}>
+            backgroundColor: "#f1f1f1",
+          }}
+        >
           <Header
             iconL="chevron-left"
             iconR="check"
@@ -95,30 +98,33 @@ const ProfileEdit = ({ navigation, route }) => {
 
           <ScrollView
             showsVerticalScrollIndicator={false}
-            style={{ marginTop: Spacing.x }}>
+            style={{ marginTop: Spacing.x }}
+          >
             <KeyboardAvoidingView
-              style={{ marginTop: Spacing.x, justifyContent: 'center' }}>
+              style={{ marginTop: Spacing.x, justifyContent: "center" }}
+            >
               <View
                 style={{
                   flex: 1,
-                  justifyContent: 'center',
-                  alignItems: 'center',
+                  justifyContent: "center",
+                  alignItems: "center",
                   marginTop: -30,
-                }}>
+                }}
+              >
                 <Image
                   style={{
-                    width: '40%',
+                    width: "40%",
                     height: 200,
-                    alignself: 'center',
+                    alignself: "center",
                   }}
-                  source={require('../assets/logowithout.png')}
+                  source={require("../assets/logowithout.png")}
                 />
               </View>
               <View>
                 <Input
                   icon="account"
                   placeholder="Full Name"
-                  onChangeText={handleChange('name')}
+                  onChangeText={handleChange("name")}
                   value={values.name}
                   returnKeyType="next"
                   error={errors.name}
@@ -128,7 +134,7 @@ const ProfileEdit = ({ navigation, route }) => {
                 <Input
                   icon="map-marker"
                   placeholder="Address (City-Ward, Abc, District)"
-                  onChangeText={handleChange('address')}
+                  onChangeText={handleChange("address")}
                   value={values.address}
                   returnKeyType="next"
                   error={errors.address}
@@ -139,29 +145,30 @@ const ProfileEdit = ({ navigation, route }) => {
                   icon="phone"
                   placeholder="Phone Number"
                   keyboardType="numeric"
-                  onChangeText={handleChange('contact')}
+                  onChangeText={handleChange("contact")}
                   value={values.contact}
                   returnKeyType="next"
                   editable={false}
                 />
                 <View
                   style={{
-                    backgroundColor: 'white',
+                    backgroundColor: "white",
                     elevation: 5,
                     borderRadius: 30,
                     height: 60,
                     marginBottom: Spacing.m,
-                  }}>
+                  }}
+                >
                   <DatePicker
                     style={{
-                      width: '98%',
+                      width: "98%",
                       elevation: 5,
                       fontSize: 22,
-                      color: 'black',
+                      color: "black",
                     }}
                     date={values.dob}
                     mode="date"
-                    placeholder={'Date Of Birth'}
+                    placeholder={"Date Of Birth"}
                     format="YYYY-MM-DD"
                     minDate="1950-01-01"
                     maxDate="2021-01-01"
@@ -179,7 +186,7 @@ const ProfileEdit = ({ navigation, route }) => {
                             : Colors.darkGrey
                         }
                         style={{
-                          position: 'absolute',
+                          position: "absolute",
                           left: 22,
                           top: 19,
                         }}
@@ -199,39 +206,44 @@ const ProfileEdit = ({ navigation, route }) => {
                       placeholderText: {
                         left: -60,
                         fontSize: 16,
-                        color: 'grey',
+                        color: "grey",
                       },
                       dateInput: {
-                        backgroundColor: 'white',
+                        backgroundColor: "white",
                         fontSize: 20,
                         borderWidth: 0,
-                        color: 'black',
+                        color: "black",
                         borderRadius: 30,
                         height: 60,
-                        width: '90%',
+                        width: "90%",
                         top: 10,
                       },
                     }}
-                    onDateChange={handleChange('dob')}
+                    onDateChange={handleChange("dob")}
                   />
                 </View>
 
                 <View
                   style={{
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',
-                  }}>
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                  }}
+                >
                   <Text
                     style={{
-                      textAlignVertical: 'center',
+                      textAlignVertical: "center",
                       ...Fonts.p1,
                       color: Colors.darkGrey,
-                    }}>
+                    }}
+                  >
                     Available as a donor?
                   </Text>
                   <Switch
                     value={values.donor}
-                    onValueChange={(value)=>setFieldValue('donor',value)}
+                    onValueChange={(value) => {
+                      console.log(value);
+                      setFieldValue("donor", value);
+                    }}
                   />
                 </View>
 
@@ -241,13 +253,15 @@ const ProfileEdit = ({ navigation, route }) => {
                       ...Fonts.p1,
                       color: Colors.darkGrey,
                       marginBottom: Spacing.x,
-                    }}>
+                    }}
+                  >
                     Choose Blood bloodGroups
                   </Text>
                   <ScrollView
                     horizontal={true}
                     showsHorizontalScrollIndicator={false}
-                    style={{ borderRadius: 8 }}>
+                    style={{ borderRadius: 8 }}
+                  >
                     {bloodGroups.map((item, i) => {
                       const color =
                         item === values.bgroup ? Colors.white : Colors.primary;
@@ -258,14 +272,16 @@ const ProfileEdit = ({ navigation, route }) => {
                       return (
                         <Pressable
                           key={i}
-                          onPress={() => setFieldValue('bgroup', item)}
+                          onPress={() => setFieldValue("bgroup", item)}
                           style={[
                             styles.bloodGroupItem,
                             { backgroundColor: bg },
-                          ]}>
+                          ]}
+                        >
                           <Text
                             selectable={false}
-                            style={{ ...Fonts.h4, color: color }}>
+                            style={{ ...Fonts.h4, color: color }}
+                          >
                             {item}
                           </Text>
                         </Pressable>
@@ -283,8 +299,8 @@ const ProfileEdit = ({ navigation, route }) => {
 };
 const styles = StyleSheet.create({
   bloodGroupItem: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     height: 100,
     width: 100,
     marginRight: Spacing.m,

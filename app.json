@@ -2,7 +2,7 @@
   "expo": {
     "name": "ragat-nepal",
     "slug": "snack-4c734101-8e88-4607-83b0-5014dfc6eeda",
-    "version": "1.0.0",
+    "version": "3.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -12,11 +12,10 @@
       "backgroundColor": "#ffffff"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/3c712780-a6b0-4bf2-9acb-9f36aa8aab4b"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
@@ -24,11 +23,20 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.nepcode.ragatnepal"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "description": "Theme added"
+    "description": "Theme added",
+    "extra": {
+      "eas": {
+        "projectId": "3c712780-a6b0-4bf2-9acb-9f36aa8aab4b"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    }
   }
 }

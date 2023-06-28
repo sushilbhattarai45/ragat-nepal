@@ -1,13 +1,13 @@
-import React from 'react';
+import React from "react";
 import {
   Text,
   View,
   StyleSheet,
   TextInput,
   TextInputProps,
-} from 'react-native';
-import { Colors, Spacing, Fonts } from './Theme';
-import { MaterialCommunityIcons as Icon } from '@expo/vector-icons';
+} from "react-native";
+import { Colors, Spacing, Fonts } from "./Theme";
+import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
 
 const Input = ({
   icon,
@@ -15,6 +15,7 @@ const Input = ({
   placeholder,
   onChangeText,
   error,
+  type,
   touched,
   ...props
 }) => {
@@ -22,8 +23,8 @@ const Input = ({
     <View
       elevation={5}
       style={{
-        flexDirection: 'row',
-        alignItems: 'center',
+        flexDirection: "row",
+        alignItems: "center",
         borderRadius: 30,
         backgroundColor: Colors.white,
         shadowOpacity: 0.5,
@@ -32,7 +33,8 @@ const Input = ({
         paddingHorizontal: 24,
         marginBottom: Spacing.m,
         ...style,
-      }}>
+      }}
+    >
       <Icon
         name={icon}
         size={24}
@@ -41,11 +43,12 @@ const Input = ({
         }
       />
       <TextInput
+        keyboardType={type}
         placeholder={placeholder}
         style={{
           fontSize: 16,
           marginHorizontal: 8,
-          width: '90%',
+          width: "90%",
           paddingLeft: 0,
           color: !touched
             ? Colors.darkGrey
@@ -53,7 +56,7 @@ const Input = ({
             ? Colors.primary
             : Colors.darkGrey,
 
-          outline: 'none',
+          outline: "none",
         }}
         {...props}
         onChangeText={onChangeText}

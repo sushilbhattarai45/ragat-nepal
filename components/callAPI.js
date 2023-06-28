@@ -1,13 +1,13 @@
 export default async function callAPI(url, d) {
   let headers = {
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
+    Accept: "application/json",
+    "Content-Type": "application/json",
   };
 
-  let data = { ...d, key: '5485FE5759545A4A' };
+  let data = { ...d, key: "5485FE5759545A4A" };
   let res;
   await fetch(url, {
-    method: 'POST',
+    method: "POST",
     headers: headers,
     body: JSON.stringify(data),
   })
@@ -16,7 +16,7 @@ export default async function callAPI(url, d) {
       res = response;
     })
     .catch((error) => {
-      alert('Error:' + error);
+      alert("Error:" + error);
     });
   return res;
 }

@@ -4,6 +4,7 @@ import {
   View,
   StyleSheet,
   Image,
+  Switch,
   ScrollView,
   Pressable,
   TextInput,
@@ -11,16 +12,12 @@ import {
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import DatePicker from "react-native-datepicker";
-
-import { Switch } from "react-native-elements";
-
 import { Ionicons } from "@expo/vector-icons";
 import callAPI from "../components/callAPI";
 import Header from "../components/Header";
 import Input from "../components/Input";
 import { Colors, Spacing, Fonts } from "../components/Theme";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
 export default class SignUp extends Component {
   constructor() {
     super();
@@ -29,7 +26,7 @@ export default class SignUp extends Component {
       phone: "",
       address: "",
       bloodg: "",
-      dob: "",
+      dob: new Date(),
       spinner: false,
       bloodGroups: ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"],
       toggle: false,
@@ -62,7 +59,6 @@ export default class SignUp extends Component {
     } else {
       var Donor = "false";
     }
-
     if (Name.length < 6) {
       alert("Short Input : Name ");
       this.setState({ spinner: false });
@@ -200,17 +196,23 @@ export default class SignUp extends Component {
             style={{ marginBottom: Spacing.m }}
           />
 
-          <View
+          {/* <View
             style={{
               backgroundColor: "white",
               elevation: 5,
               borderRadius: 30,
               height: 60,
             }}
-          >
-            <DatePicker
+          > */}
+          <Input
+            type="numeric"
+            icon="calendar"
+            placeholder="Date of birth(YYYY-MM-DD)"
+            onChangeText={(value) => this.setState({ dob: value })}
+            style={{ marginBottom: Spacing.m }}
+          />
+          {/* <DatePicker
               style={{
-                width: "98%",
                 elevation: 5,
                 fontSize: 22,
                 color: "black",
@@ -265,8 +267,8 @@ export default class SignUp extends Component {
               onDateChange={(date) => {
                 this.setState({ dob: date });
               }}
-            />
-          </View>
+            /> */}
+          {/* </View> */}
           <View style={{ flexDirection: "row", left: 20, height: 60 }}>
             <Text
               style={{
