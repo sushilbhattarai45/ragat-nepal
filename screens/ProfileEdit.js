@@ -44,8 +44,8 @@ const ProfileEdit = ({ navigation, route }) => {
       const num = await AsyncStorage.getItem("contact");
       console.log(num);
       if (num) {
-        console.log(num);
-
+        console.log("ok" + num);
+        console.log(values["donor"]);
         values["donor"] = `${values["donor"]}`;
         const res = await callAPI(url, { ...values });
         res.errorstate
@@ -159,67 +159,14 @@ const ProfileEdit = ({ navigation, route }) => {
                     marginBottom: Spacing.m,
                   }}
                 >
-                  <DatePicker
-                    style={{
-                      width: "98%",
-                      elevation: 5,
-                      fontSize: 22,
-                      color: "black",
-                    }}
-                    date={values.dob}
-                    mode="date"
-                    placeholder={"Date Of Birth"}
-                    format="YYYY-MM-DD"
-                    minDate="1950-01-01"
-                    maxDate="2021-01-01"
-                    confirmBtnText="Confirm"
-                    cancelBtnText="Cancel"
-                    iconComponent={
-                      <Icon
-                        name="calendar"
-                        size={24}
-                        color={
-                          !touched.dob
-                            ? Colors.darkGrey
-                            : errors.dob
-                            ? Colors.primary
-                            : Colors.darkGrey
-                        }
-                        style={{
-                          position: "absolute",
-                          left: 22,
-                          top: 19,
-                        }}
-                      />
-                    }
-                    showIcon={true}
-                    customStyles={{
-                      dateIcon: {
-                        // position: 'absolute',
-                        top: 17,
-                      },
-                      dateText: {
-                        left: -60,
-                        fontSize: 16,
-                      },
-
-                      placeholderText: {
-                        left: -60,
-                        fontSize: 16,
-                        color: "grey",
-                      },
-                      dateInput: {
-                        backgroundColor: "white",
-                        fontSize: 20,
-                        borderWidth: 0,
-                        color: "black",
-                        borderRadius: 30,
-                        height: 60,
-                        width: "90%",
-                        top: 10,
-                      },
-                    }}
-                    onDateChange={handleChange("dob")}
+                  <Input
+                    type="numeric"
+                    icon="calendar"
+                    value={values.dob}
+                    height={30}
+                    placeholder="Date of birth(YYYY-MM-DD)"
+                    onChangeText={handleChange("dob")}
+                    style={{ marginBottom: Spacing.m }}
                   />
                 </View>
 
