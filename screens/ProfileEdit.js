@@ -45,11 +45,13 @@ const ProfileEdit = ({ navigation, route }) => {
       console.log(num);
       if (num) {
         console.log("ok" + num);
-        console.log(values["donor"]);
+        console.log(`${values["donor"]}`);
         values["donor"] = `${values["donor"]}`;
+        alert("jello");
         const res = await callAPI(url, { ...values });
+        console.log("okkkkkkk" + res.errorstate);
         res.errorstate
-          ? alert(res.message)
+          ? console.log(res.message)
           : alert("Your Data has been updated");
         navigation.navigate("Profile");
       }
