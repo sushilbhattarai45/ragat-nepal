@@ -43,6 +43,7 @@ const ProfileEdit = ({ navigation, route }) => {
       const url = "https://ragatnepal.000webhostapp.com/api/update.php";
       const num = await AsyncStorage.getItem("contact");
       console.log(num);
+
       if (num) {
         console.log("ok" + num);
         values["donor"] = `${values["donor"]}`;

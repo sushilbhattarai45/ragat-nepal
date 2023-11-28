@@ -2,7 +2,7 @@
   "expo": {
     "name": "Ragat Nepal",
     "slug": "snack-abvdc",
-    "version": "6.0.0",
+    "version": "7.0.0",
     "orientation": "portrait",
     "icon": "./assets/logo.png",
     "userInterfaceStyle": "light",
@@ -11,7 +11,7 @@
       "supportsTablet": true
     },
     "android": {
-      "versionCode": 6,
+      "versionCode": 7,
       "package": "com.nepcode.ragatnepal"
     },
     "web": {
