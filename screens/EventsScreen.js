@@ -80,7 +80,7 @@ const EventsScreen = ({ navigation }) => {
   const [loading, setLoading] = React.useState(false);
 
   const getPosts = async () => {
-    const url = "https://ragatnepal.com/api/eventsgetapi.php";
+    const url = "https://ragatnepal.000webhostapp.com/api/eventsgetapi.php";
     setLoading(true);
     let res = await callAPI(url, {});
     res.errorstate ? alert(res.message) : null;

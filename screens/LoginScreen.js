@@ -186,7 +186,7 @@ export default function PhoneAuthScreen({ navigation }) {
                   setSpinner(true);
                   var Contact = num;
                   var InsertAPIURL =
-                    "https://ragatnepal.com/api/checkloginapi.php";
+                    "https://ragatnepal.000webhostapp.com/api/checkloginapi.php";
                   var headers = {
                     Accept: "application/json",
                     "Content-Type": "application/json",

@@ -40,7 +40,7 @@ const ProfileEdit = ({ navigation, route }) => {
   const bloodGroups = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"];
   const submit = async (values) => {
     try {
-      const url = "https://ragatnepal.com/api/update.php";
+      const url = "https://ragatnepal.000webhostapp.com/api/update.php";
       const num = await AsyncStorage.getItem("contact");
       console.log(num);
       if (num) {

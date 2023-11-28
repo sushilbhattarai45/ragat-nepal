@@ -32,7 +32,7 @@ const HomeScreen = ({ navigation }) => {
   const [loading, setLoading] = React.useState(false);
 
   const getImg = async () => {
-    const url = "https://ragatnepal.com/api/images.php";
+    const url = "https://ragatnepal.000webhostapp.com/api/images.php";
     setLoading(true);
     let res = await callAPI(url, {});
     (await res.errorstate) ? alert(res.message) : null;
@@ -61,8 +61,10 @@ const HomeScreen = ({ navigation }) => {
       setSpinner(true);
 
       setLoggedIn(true);
-      const profileAPI = "https://ragatnepal.com/api/profileapi.php";
-      const donationAPI = "https://ragatnepal.com/api/donationgetapi.php";
+      const profileAPI =
+        "https://ragatnepal.000webhostapp.com/api/profileapi.php";
+      const donationAPI =
+        "https://ragatnepal.000webhostapp.com/api/donationgetapi.php";
       let data = { name: "", bloodGroup: "", donations: 0 };
       let res = await callAPI(donationAPI, { contact: num });
       if (res.data !== null) {

@@ -1,20 +1,20 @@
-import React, { useEffect } from 'react';
-import { Text, View, Switch, Image } from 'react-native';
+import React, { useEffect } from "react";
+import { Text, View, Switch, Image } from "react-native";
 import {
   DrawerContentScrollView,
   DrawerItemList,
-} from '@react-navigation/drawer';
-import callAPI from '../components/callAPI';
+} from "@react-navigation/drawer";
+import callAPI from "../components/callAPI";
 
-import { MaterialCommunityIcons as Icon } from '@expo/vector-icons';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function CustomDrawerContent(props) {
   // let [contact, setContact] = React.useState('');
   // const [toggle, setToggle] = React.useState('');
 
   // const getToggle = () => {
-  //   const url = 'https://ragatnepal.com/api/availability.php';
+  //   const url = 'https://ragatnepal.000webhostapp.com/api/availability.php';
   //   if (contact) {
   //     const res = callAPI(url, { contact, donor: null });
   //     setToggle(res[0].donor);
@@ -26,7 +26,7 @@ export default function CustomDrawerContent(props) {
   // }
   // const updateToggle = (value) => {
   //   setToggle(value);
-  //   const url = 'https://ragatnepal.com/api/availability.php';
+  //   const url = 'https://ragatnepal.000webhostapp.com/api/availability.php';
   //   if (contact) {
   //     let res = callAPI(url, { contact, donor: toggle });
   //     console.log(res[0]);
@@ -51,8 +51,8 @@ export default function CustomDrawerContent(props) {
     <DrawerContentScrollView {...props} style={{ flex: 1 }}>
       <View style={{ padding: 10 }}>
         <Image
-          style={{ resizeMode: 'cover', width: '100%', height: 200 }}
-          source={require('../assets/logowithout.png')}
+          style={{ resizeMode: "cover", width: "100%", height: 200 }}
+          source={require("../assets/logowithout.png")}
         />
       </View>
       <DrawerItemList {...props} />

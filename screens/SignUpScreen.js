@@ -198,7 +198,7 @@ export default class SignUp extends Component {
           />
           <Input
             icon="calendar"
-            placeholder="Date of Birth (YYYY-MM-DD)"
+            placeholder="Date of Birth  (YYYY-MM-DD) in AD"
             onChangeText={(value) => this.setState({ dob: value })}
             style={{ marginBottom: Spacing.m }}
           />

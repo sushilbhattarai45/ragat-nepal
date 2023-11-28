@@ -1,22 +1,17 @@
 {
   "expo": {
     "name": "Ragat Nepal",
-    "slug": "snack-4c734101-8e88-4607-83b0-5014dfc6eeda",
-    "version": "5.0.0",
+    "slug": "snack-abvdc",
+    "version": "6.0.0",
     "orientation": "portrait",
     "icon": "./assets/logo.png",
     "userInterfaceStyle": "light",
-
-    "updates": {
-      "fallbackToCacheTimeout": 0,
-      "url": "https://u.expo.dev/3c712780-a6b0-4bf2-9acb-9f36aa8aab4b"
-    },
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
     "android": {
-      "versionCode": 5,
+      "versionCode": 6,
       "package": "com.nepcode.ragatnepal"
     },
     "web": {
@@ -25,6 +20,10 @@
     "runtimeVersion": {
       "policy": "sdkVersion"
     },
-    "extra": {}
+    "extra": {
+      "eas": {
+        "projectId": "43a7eeea-d215-4739-908d-93cf8542966a"
+      }
+    }
   }
 }

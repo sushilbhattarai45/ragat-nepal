@@ -19,5 +19,5 @@ export default async function callAPI(url, d) {
       alert("Error:" + error);
       console.log(data);
     });
-  return res
+  return res;
 }

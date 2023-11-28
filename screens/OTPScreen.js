@@ -146,7 +146,7 @@ export default function PhoneOtpScreen(props) {
   }, []);
 
   async function insertRecord() {
-    var url = "https://ragatnepal.com/api/signupapi.php";
+    var url = "https://ragatnepal.000webhostapp.com/api/signupapi.php";
     var headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -171,6 +171,7 @@ export default function PhoneOtpScreen(props) {
         if (response[0].errorstate == 0) {
           setandred();
         } else {
+          alert(response[0].message);
           props.navigation.navigate("Home", { screen: "Home" });
         }
       })

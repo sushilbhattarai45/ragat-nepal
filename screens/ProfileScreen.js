@@ -83,7 +83,7 @@ const ProfileScreen = ({ navigation }) => {
     }
   };
   async function getProfile() {
-    const url = "https://ragatnepal.com/api/profileapi.php";
+    const url = "https://ragatnepal.000webhostapp.com/api/profileapi.php";
     var num = await AsyncStorage.getItem("contact");
     if (num) {
       let res = await callAPI(url, { contact: num });
@@ -103,7 +103,7 @@ const ProfileScreen = ({ navigation }) => {
   async function getDonations() {
     var num = await AsyncStorage.getItem("contact");
     if (num) {
-      const url = "https://ragatnepal.com/api/donationgetapi.php";
+      const url = "https://ragatnepal.000webhostapp.com/api/donationgetapi.php";
 
       let res = await callAPI(url, { contact: num });
       res.errorstate ? alert(res.message) : setDonations(res.data);
@@ -113,14 +113,16 @@ const ProfileScreen = ({ navigation }) => {
   async function removeDonation(id) {
     var num = await AsyncStorage.getItem("contact");
 
-    const url = "https://ragatnepal.com/api/donationdeleteapi.php";
+    const url =
+      "https://ragatnepal.000webhostapp.com/api/donationdeleteapi.php";
     let res = await callAPI(url, { contact: num, id });
     await getDonations();
   }
   async function postDonation(donation) {
     var num = await AsyncStorage.getItem("contact");
     if (num) {
-      const url = "https://ragatnepal.com/api/donationpostapi.php";
+      const url =
+        "https://ragatnepal.000webhostapp.com/api/donationpostapi.php";
       let res = await callAPI(url, { ...donation, contact: num });
       await getDonations(contact);
     } else {
