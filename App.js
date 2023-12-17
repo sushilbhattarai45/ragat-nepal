@@ -1,27 +1,27 @@
-import React from 'react';
-import { Text, View, StyleSheet, Pressable, ScrollView } from 'react-native';
-import HomeScreen from './screens/HomeScreen';
-import FindADonorScreen from './screens/FindADonorScreen';
-import EventsScreen from './screens/EventsScreen';
-import ProfileScreen from './screens/ProfileScreen';
-import PhoneAuthScreen from './screens/LoginScreen';  
-import Feedback from './screens/FeedBack';
-import Contact from './screens/Contact';
-import DrawerContent from './screens/Drawer';
-import Messages from './screens/notifi';
-import Splash from './screens/splash';
-import PhoneOtpScreen from './screens/OTPScreen';      
-import SignUp from './screens/SignUpScreen';    
-import ProfileEdit from './screens/ProfileEdit';  
-          
-import Report from './screens/Report';
- 
-import { Colors, Spacing, Fonts } from './components/Theme';
-import { MaterialCommunityIcons as Icon } from '@expo/vector-icons';
+import React from "react";
+import { Text, View, StyleSheet, Pressable, ScrollView } from "react-native";
+import HomeScreen from "./screens/HomeScreen";
+import FindADonorScreen from "./screens/FindADonorScreen";
+import EventsScreen from "./screens/EventsScreen";
+import ProfileScreen from "./screens/ProfileScreen";
+import PhoneAuthScreen from "./screens/LoginScreen";
+import Feedback from "./screens/FeedBack";
+import Contact from "./screens/Contact";
+import DrawerContent from "./screens/Drawer";
+import Messages from "./screens/notifi";
+import Splash from "./screens/splash";
+import PhoneOtpScreen from "./screens/OTPScreen";
+import SignUp from "./screens/SignUpScreen";
+import ProfileEdit from "./screens/ProfileEdit";
 
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import Report from "./screens/Report";
+
+import { Colors, Spacing, Fonts } from "./components/Theme";
+import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 
 const Stack = createStackNavigator();
 const ProfileStack = createStackNavigator();
@@ -31,7 +31,8 @@ function Profile() {
   return (
     <ProfileStack.Navigator
       initialRouteName="Profile"
-      screenOptions={{ headerShown: false }}>
+      screenOptions={{ headerShown: false }}
+    >
       <ProfileStack.Screen name="Profile" component={ProfileScreen} />
       <ProfileStack.Screen name="ProfileEdit" component={ProfileEdit} />
     </ProfileStack.Navigator>
@@ -45,7 +46,8 @@ function HomeNavigator() {
       screenOptions={{
         headerShown: false,
         drawerActiveTintColor: Colors.primary,
-      }}>
+      }}
+    >
       <Drawer.Screen
         name="Home"
         component={HomeScreen}
@@ -57,7 +59,7 @@ function HomeNavigator() {
               color={focused ? Colors.primary : Colors.darkGrey}
             />
           ),
-          title: 'Home',
+          title: "Home",
         }}
       />
       <Drawer.Screen
@@ -71,7 +73,7 @@ function HomeNavigator() {
               color={focused ? Colors.primary : Colors.darkGrey}
             />
           ),
-          title: 'Profile',
+          title: "Profile",
         }}
       />
 
@@ -154,8 +156,6 @@ function HomeNavigator() {
           ),
         }}
       />
-
-      
     </Drawer.Navigator>
   );
 }
@@ -175,7 +175,8 @@ function AppStack() {
     <NavigationContainer>
       <Stack.Navigator
         initialRouteName="SignUp"
-        screenOptions={{ headerShown: false }}>
+        screenOptions={{ headerShown: false }}
+      >
         <Stack.Screen name="Splash" component={Splash} />
         <Stack.Screen name="Home" component={HomeNavigator} />
         <Stack.Screen name="Auth" component={AuthNavigator} />
